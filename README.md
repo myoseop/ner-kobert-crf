@@ -107,21 +107,6 @@ decoding_ner_sentence: [CLS] ‘모든 단점은 장점이 될수 있다' (<Lion
 - num of train: 23032, num of val: 931
 - Training set: ```00002_NER.txt```, ..., ```EXOBRAIN_NE_CORPUS_007.txt``` (1,425 files)
 - Validation set: ```EXOBRAIN_NE_CORPUS_009.txt```, ```EXOBRAIN_NE_CORPUS_010.txt``` (2 files)
-
-- Classification Report
-  - 대체적으로 DAT, PER, NOH, ORG, PNT 순으로 높음
-  - POH, LOC등은 좀 낮은 편
-  - validation set 기준, macro avg F1: 87.56
-<img src="./assets/classifcation_report_12_epoch.png" width="50%">
-
-- Confusion Matrix
-  - POH를 ORG로 예측하는 경우가 있음 (기타를 기관으로 분류하는 거니 어느정도 그럴 수 있다고 생각)
-  - ORG를 PER로 예측하는 경우도 좀 있음 (수정해야되는 케이스)
-<img src="./assets/best-epoch-12-step-1000-acc-0.960-cm.png" width="80%">
-
-- Training & Evaluation Accurcay & Loss Graph
-<img src="./assets/ner_training_acc_loss.gif" width="80%">
-
 - Benchmark (Devset F1 scroe )
 
 |Model|MacroAvg F1 score|Epoch|Date|
