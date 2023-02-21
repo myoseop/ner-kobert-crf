@@ -1,14 +1,29 @@
 # Pytorch-BERT-CRF-NER
 
-[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/eagle705/pytorch-bert-crf-ner)](https://github.com/eagle705/pytorch-bert-crf-ner)
-
 A PyTorch implementation of Korean NER Tagger based on BERT + CRF (PyTorch v1.2 / Python 3.x)  
 
-![kobert_crf_fig](./assets/kobert_crf_fig.png)
+해당 깃허브 소스를 기반으로 작성
+https://github.com/eagle705/pytorch-bert-crf-ner
 
-### Examples
+### Requirements
+```bash
+pip install -r requirements.txt
+```
 
-![ner_jupyter_notebook](./assets/ner_jupyter_notebook_3.png)
+### Model File Link
+- [BERT CRF model file with validation](https://works.do/FhKyyNr)
+- [BERT CRF model file with training all dataset](https://works.do/xuweeF8)
+- [BERT CRF, BERT_alone sharing folder (including BiLSTM, BiGRU)](https://works.do/xkVee9n)
+
+### train
+```bash
+python train_bert_crf.py 
+```
+
+### inference
+```bash
+python inference.py 
+```
 
 ### Logs
 ```
@@ -115,42 +130,3 @@ decoding_ner_sentence: [CLS] ‘모든 단점은 장점이 될수 있다' (<Lion
 |**KoBERT+CRF**|**0.8756**|12|191129|
 |KoBERT+BiLSTM+CRF|0.8659|12|191129|
 
-
-
-### Requirements
-```bash
-pip install -r requirements.txt
-```
-
-### Model File Link
-- [BERT CRF model file with validation](https://works.do/FhKyyNr)
-- [BERT CRF model file with training all dataset](https://works.do/xuweeF8)
-- [BERT CRF, BERT_alone sharing folder (including BiLSTM, BiGRU)](https://works.do/xkVee9n)
-
-### train
-```bash
-python train_bert_crf.py 
-```
-
-### inference
-```bash
-python inference.py 
-```
-
-### Visualization
-![BERT_NER_viz](./assets/kobert_ner_11_layer_viz.gif)
-
-### Future work
-- ~~Validation pipeline~~
-- NER tag probability
-- RestfulAPI
-- Knowledge Distillation
-- Apex fp16 half-precision
-- Refactoring, Refactoring, Refactoring
-
-### Reference Repo
-- [NLP implementation by aisolab](https://github.com/aisolab/nlp_implementation)
-- [pytorch-crf](https://github.com/kmkurn/pytorch-crf/blob/8f3203a1f1d7984c87718bfe31853242670258db/docs/index.rst)
-- [SKTBrain KoBERT](https://github.com/SKTBrain/KoBERT)
-- [Finetuning configuration from huggingface](https://github.com/huggingface/pytorch-transformers/blob/master/examples/run_multiple_choice.py)
-- [BERT Attention Visualization](https://github.com/jessevig/bertviz)
