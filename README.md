@@ -58,30 +58,6 @@ len: 29, pred_ner_tag:['[CLS]', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'
 decoding_ner_sentence: [CLS] ‘모든 단점은 장점이 될수 있다' (<Lionel Andres Messi:POH>)[SEP]
 ```
 
-### Note
-- 엔티티를 토큰화할때 토큰의 길이가 엔티티 자체보다 길어지는 경우, 정확한 엔티티 추출이 안될 수 있음 (토크나이저의 한계)
-  - 이러한 경우에 대해서는 제외하고 학습할 수도 있지만, 더 넓은 범위를 커버하기 위해 포함하는 것으로 결정
-  - e.g.)  첫 회를 시작으로 <13일:DAT>까지 -> ('▁13', 'B-DAT') ('일까지', 'I-DAT') (조사등이 같이 추출됨)
-- 반대로 토큰화한 길이가 엔티티 자체보다 작은 경우 'I-tag' 토큰으로 해결가능
-- pretrained sentencepiece를 사용하기 때문에 사전 변경은 안됨 (이것과 별개로 sp 사전을 변경 하는 방법은 따로 찾아봐야함) 
-- pytorch-crf 라이브러리가 multi-gpu에서 안됨
-  - 추후 변경
-- BERT가 LM기반이라 그런지 오타에도 어느정도 강건한 편인듯함
-- 문장 길이에 따라 NER 결과가 달라짐
-- 영어 데이터에 대해서는 학습이 안되서 잘 안됨
-- 사전에 나오는 '▁' 토큰과 우리가 흔히 사용하는 underscore '_'는 다르므로 주의할 것
-- B 태그의 NER과 I 태그의 NER이 다를 경우를 방지하기 위해 BERT+Bi(LSTM or GRU)+CRF 구조로도 테스트 해봄
-  - 장점 
-    - 엔티티 토큰의 길이가 긴 경우는 잘 잡아냄
-    - B 태그의 NER과 I 태그의 NER이 다른 경우가 확실히 줄어듬
-  - 단점
-    - 모델 사이즈가 커진다는 것
-    - B 태그의 위치를 잘 못잡는 경우가 발생함  <12일:DAT>로 잡아야되는걸 앞문장의 구두점을 포함해서 <. 12일:DAT>로 잡거나, <1.83%:PNT>으로 잡아야 되는걸 1.8<3%:PNT> 잡기도함
-  - 느낀점
-    - B 태그 위치를 잘못잡는것 때문에 쓰기가 약간 애매하다는 생각이 듬 (보완이 필요함)
-    - 학습은 GRU가 LSTM 보다 1 epoch정도 더 빠르게 성능이 올라감
-- If you want to apply it to other languages, you don't have to change the model architecture. Instead, you just change vocab, pretrained BERT(from huggingface), and training dataset.
-
 ### Dataset
 - [NER Dataset from 한국해양대학교 자연언어처리 연구실](https://github.com/kmounlp/NER)
 
