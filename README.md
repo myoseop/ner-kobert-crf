@@ -9,6 +9,13 @@ https://github.com/eagle705/pytorch-bert-crf-ner
 ```bash
 pip install -r requirements.txt
 ```
+```
+sudo apt-get install openjdk-11-jdk
+```
+```
+pip install pytorch-pretrained-bert
+```
+
 
 ### Model File Link
 - [BERT CRF model file with validation](https://works.do/FhKyyNr)
